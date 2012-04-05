@@ -1,0 +1,32 @@
+<table>
+  <% @lists.each do |list| %>
+    <tr class="list">
+      <th>
+        <%= link_to "#{list.name}", list %>:  <%= list.description %>
+      </th>
+      
+      <td>
+        (<%= link_to 'Edit', edit_list_path(list) %>|<%= link_to 'Delete', list, confirm: 'Are you sure?', method: :delete %>)
+      </td>
+
+      <% unless list.tasks.empty? %>
+      <tr>
+        <td>
+          <ul>
+            <!-- Display incomplete tasks for each list -->
+            <% list.tasks.incomplete.each do |task| %>
+                <li><%= task.description %></li>
+            <% end %>
+            <!-- End task display -->
+          </ul>
+        </td>
+        <td></td>
+      </tr>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
+
+<br />
+<hr />
+<%= button_to 'Create List', new_list_path, method: 'get' %>

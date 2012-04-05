@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @list.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @list.description %>
+</p>
+
+<h3>Active tasks:</h3>
+<ul>
+  <% @list.tasks.incomplete.each do |task| %>
+    <% if task.id %>
+      <li class='task'><%= task.description %> - <%= button_to 'Complete', complete_task_path(@list.id, task.id) %></li>
+    <% end %>
+  <% end %>
+</ul>
+
+<h3>Completed tasks:</h3>
+<ul>
+  <% @list.tasks.complete.each do |task| %>
+    <% if task.id %>
+      <li class='task'><%= task.description %> - <%= button_to 'Undo', undo_task_path(@list.id, task.id) %></li>
+    <% end %>
+  <% end %>
+</ul>
+
+<hr />
+
+<%= render 'tasks/create_task' %>
+
+<%= link_to 'Back', lists_path %>

@@ -1,0 +1,13 @@
+This is a simple todo list application that allows a user to create lists, add tasks,
+and complete/undo tasks.
+
+Features to add:
+  - Delete individual tasks
+  - Add ability to rearrange/sort lists
+  - Drag/drop tasks from one list to another list
+  - Add task priorities and due dates
+  - Implement using backbone.js
+
+Other things to do:
+  - Update tests
+  - Update overall presentation
